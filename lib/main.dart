@@ -18,19 +18,30 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Despesas pessoais'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            child: Card(
-              child: Text('Gráfico'),
-              elevation: 5,
-            ),
-          ),
-          TransactionUser()
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+          )
         ],
       ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              child: Card(
+                child: Text('Gráfico'),
+                elevation: 5,
+              ),
+            ),
+            TransactionUser()
+          ],
+        ),
+      ),
+      floatingActionButton:
+          FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
