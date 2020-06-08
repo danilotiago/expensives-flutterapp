@@ -41,6 +41,23 @@ class _TransactionFormState extends State<TransactionForm> {
               decoration: InputDecoration(labelText: 'Valor (R\$)'),
             ),
             Container(
+              child: Row(
+                children: <Widget>[
+                  Text('Nenhuma data selecionada'),
+                  FlatButton(
+                    child: Text(
+                      'Selecionar data',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    textColor: Theme.of(context).primaryColor,
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+            Container(
               width: double.infinity,
               margin: EdgeInsets.only(top: 15.0),
               child: FlatButton(
