@@ -11,8 +11,11 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FittedBox( // ajusta para nao quebrar o texto do label
-          child: Text('R\$${this.value}'),
+        Container(
+          height: 20,
+          child: FittedBox( // ajusta para nao quebrar o texto do label
+            child: Text('R\$${this.value}'),
+          ),
         ),
         SizedBox(height: 5),
         Container(
