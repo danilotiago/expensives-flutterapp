@@ -80,7 +80,12 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: Text('Despesas pessoais'),
+      title: Text(
+        'Despesas pessoais',
+        style: TextStyle(
+          fontSize: 20 * MediaQuery.of(context).textScaleFactor,
+        ),
+      ),
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.add),
