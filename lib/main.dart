@@ -105,12 +105,12 @@ class _MainPageState extends State<MainPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              height: avaliableHeight * 0.3,
+              height: avaliableHeight * 0.25,
               child: Chart(recentTransactions: _recentTransactions),
             ),
             Container(
-              height: avaliableHeight * 0.7,
-              child: TransactionList(
+              height: avaliableHeight * 0.75,
+              child: TransactionList( 
                 transactions: _transactions,
                 onRemove: _removeTransaction,
               ),
