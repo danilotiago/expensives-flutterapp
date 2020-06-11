@@ -119,12 +119,12 @@ class _MainPageState extends State<MainPage> {
           children: <Widget>[
             if (_showChart || !isLandscape)
               Container(
-                height: avaliableHeight * (isLandscape ? 0.7 : 0.25),
+                height: avaliableHeight * (isLandscape ? 0.8 : 0.25),
                 child: Chart(recentTransactions: _recentTransactions),
               ),
             if (!_showChart || !isLandscape)
               Container(
-                height: avaliableHeight * 0.75,
+                height: avaliableHeight * (isLandscape ? 1 : 0.75),
                 child: TransactionList(
                   transactions: _transactions,
                   onRemove: _removeTransaction,
