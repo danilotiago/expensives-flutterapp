@@ -90,11 +90,13 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
+    final iconList = Platform.isIOS ? CupertinoIcons.news : Icons.list;
+    final iconChart = Platform.isIOS ? CupertinoIcons.refresh : Icons.show_chart;
 
     final List<Widget> actions = <Widget>[
       if (isLandscape)
         _getIconButton(
-          _showChart ? Icons.list : Icons.show_chart,
+          _showChart ? iconList : iconChart,
           () {
             setState(() {
               _showChart = !_showChart;
@@ -129,24 +131,26 @@ class _MainPageState extends State<MainPage> {
         appBar.preferredSize.height -
         mediaQuery.padding.top;
 
-    final bodyPage = SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          if (_showChart || !isLandscape)
-            Container(
-              height: avaliableHeight * (isLandscape ? 0.8 : 0.25),
-              child: Chart(recentTransactions: _recentTransactions),
-            ),
-          if (!_showChart || !isLandscape)
-            Container(
-              height: avaliableHeight * (isLandscape ? 1 : 0.75),
-              child: TransactionList(
-                transactions: _transactions,
-                onRemove: _removeTransaction,
+    final bodyPage = SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            if (_showChart || !isLandscape)
+              Container(
+                height: avaliableHeight * (isLandscape ? 0.8 : 0.25),
+                child: Chart(recentTransactions: _recentTransactions),
               ),
-            ),
-        ],
+            if (!_showChart || !isLandscape)
+              Container(
+                height: avaliableHeight * (isLandscape ? 1 : 0.75),
+                child: TransactionList(
+                  transactions: _transactions,
+                  onRemove: _removeTransaction,
+                ),
+              ),
+          ],
+        ),
       ),
     );
 
