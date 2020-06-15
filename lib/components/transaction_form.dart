@@ -1,3 +1,4 @@
+import 'package:expenses/components/adaptative_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -45,11 +46,10 @@ class _TransactionFormState extends State<TransactionForm> {
         elevation: 5,
         child: Padding(
           padding: EdgeInsets.only(
-            top: 10,
-            left: 10,
-            right: 10,
-            bottom: 10 + MediaQuery.of(context).viewInsets.bottom
-          ),
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10 + MediaQuery.of(context).viewInsets.bottom),
           child: Column(
             children: <Widget>[
               TextField(
@@ -89,11 +89,9 @@ class _TransactionFormState extends State<TransactionForm> {
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.only(top: 15.0),
-                child: FlatButton(
-                  child: Text('Salvar'),
-                  color: Colors.purple,
-                  textColor: Colors.white,
+                child: AdaptativeButton(
                   onPressed: _submitForm,
+                  label: 'Salvar',
                 ),
               )
             ],
