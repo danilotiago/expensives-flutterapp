@@ -1,6 +1,6 @@
 import 'package:expenses/components/adaptative_button.dart';
+import 'package:expenses/components/adaptative_date_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'adaptative_text_field.dart';
 
@@ -24,21 +24,6 @@ class _TransactionFormState extends State<TransactionForm> {
 
     if (title.isNotEmpty && value > 0 && _selectedDate != null)
       widget.onSubmit(title, value, _selectedDate);
-  }
-
-  _showDatePicker() {
-    showDatePicker(
-      context: context,
-      initialDate: DateTime.now(), // data setada
-      firstDate: DateTime(2019), // data minima 1/1/2019
-      lastDate: DateTime.now(), // data maxima
-    ).then((pickedDate) {
-      if (pickedDate != null) {
-        setState(() {
-          _selectedDate = pickedDate;
-        });
-      }
-    });
   }
 
   @override
@@ -65,29 +50,13 @@ class _TransactionFormState extends State<TransactionForm> {
                 onSubmitted: (_) => _submitForm(),
                 label: 'Valor (R\$)',
               ),
-              Container(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        _selectedDate == null
-                            ? 'Nenhuma data selecionada'
-                            : 'Em: ${DateFormat('dd/MM/yyyy').format(_selectedDate)}',
-                      ),
-                    ),
-                    FlatButton(
-                      child: Text(
-                        'Selecionar data',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      textColor: Theme.of(context).primaryColor,
-                      onPressed: _showDatePicker,
-                    )
-                  ],
-                ),
-              ),
+              AdaptativeDatePicker(
+                  selectedDate: _selectedDate,
+                  onDateChange: (newDate) {
+                    setState(() {
+                      _selectedDate = newDate;
+                    });
+                  }),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.only(top: 15.0),
